@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "ccr-website",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "start", "--prefix", "C:\\Users\\ljunw\\Documents\\CCR\\ccr-website"],
+      "port": 3000,
+      "autoPort": true
+    }
+  ]
+}
