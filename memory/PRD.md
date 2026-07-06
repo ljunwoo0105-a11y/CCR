@@ -10,7 +10,7 @@ to run in the Emergent preview environment.
 
 ## Architecture (as imported)
 - **Framework**: Next.js 14 App Router + TypeScript (strict) + Tailwind CSS
-- **DB**: Prisma + SQLite (`prisma/schema.prisma`, file at `frontend/ccr.db`)
+- **DB**: Prisma + **PostgreSQL (Neon, ap-southeast-2)** — migrated from SQLite on 2026-01-06. Schema `provider = "postgresql"`, `DATABASE_URL` points at Neon in `frontend/.env`.
 - **Auth**: `jose` JWT session cookies + `bcryptjs` password hashing
 - **AI**: `@anthropic-ai/sdk` (pricing agents, admin AI console) — needs `ANTHROPIC_API_KEY`
 - **Email**: `nodemailer` (falls back to `var/outbox/*.html` in dev)

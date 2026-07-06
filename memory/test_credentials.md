@@ -9,7 +9,7 @@ Seeded by `prisma/seed.ts` on 2026-01-06.
 
 ## Staff (staff portal only — /staff)
 - Email: `staff@ccr.local`
-- Password: `7yM-e2_nFLys`
+- Password: `MfJlSlWAVxHF`
 - Source: printed once by seed script; re-seed will not regenerate if user exists.
 
 Login page: `/staff/login`
