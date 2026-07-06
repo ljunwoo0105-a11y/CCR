@@ -10,7 +10,8 @@ export function LogoutButton() {
     setBusy(true);
     try {
       await fetch("/api/staff/logout", { method: "POST" });
-    } catch {
+    } catch (err) {
+      console.warn("Logout request failed — clearing session client-side", err);
       // Cookie may already be gone — still send them to the login screen.
     }
     window.location.href = "/staff/login";

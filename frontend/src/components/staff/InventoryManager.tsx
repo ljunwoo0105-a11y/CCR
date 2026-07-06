@@ -238,7 +238,7 @@ export default function InventoryManager({ provider }: Props) {
             {syncResult.errors.length > 0 && (
               <ul className="mt-1 list-inside list-disc text-xs text-rose-600">
                 {syncResult.errors.map((err, i) => (
-                  <li key={i}>{err}</li>
+                  <li key={`${i}-${err}`}>{err}</li>
                 ))}
               </ul>
             )}

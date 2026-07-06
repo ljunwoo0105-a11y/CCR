@@ -3,10 +3,14 @@ import test from "node:test";
 
 import { parseLoginRequest, redirectUrlForRequest } from "../src/lib/login-request";
 
+// Non-sensitive test fixture — parser test only, never used as a real credential.
+const FIXTURE_PASSWORD =
+  process.env.TEST_LOGIN_FIXTURE_PASSWORD ?? "test-password-example";
+
 test("parses form login requests when JavaScript submit does not run", async () => {
   const body = new URLSearchParams({
     email: " STAFF@CCR.LOCAL ",
-    password: "CCRLocal2026!",
+    password: FIXTURE_PASSWORD,
     next: "/staff",
   });
   const req = new Request("http://127.0.0.1:3000/api/staff/login", {
@@ -21,7 +25,7 @@ test("parses form login requests when JavaScript submit does not run", async () 
   if (result.ok) {
     assert.deepEqual(result.data, {
       email: "staff@ccr.local",
-      password: "CCRLocal2026!",
+      password: FIXTURE_PASSWORD,
       next: "/staff",
       wantsHtmlRedirect: true,
     });
@@ -34,7 +38,7 @@ test("parses JSON login requests for hydrated client submits", async () => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       email: " STAFF@CCR.LOCAL ",
-      password: "CCRLocal2026!",
+      password: FIXTURE_PASSWORD,
     }),
   });
 
@@ -44,7 +48,7 @@ test("parses JSON login requests for hydrated client submits", async () => {
   if (result.ok) {
     assert.deepEqual(result.data, {
       email: "staff@ccr.local",
-      password: "CCRLocal2026!",
+      password: FIXTURE_PASSWORD,
       next: null,
       wantsHtmlRedirect: false,
     });

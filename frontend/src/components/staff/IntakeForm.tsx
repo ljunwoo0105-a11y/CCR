@@ -93,8 +93,9 @@ export default function IntakeForm() {
           setMatches(json.data);
           setMatchesOpen(json.data.length > 0);
         }
-      } catch {
-        /* lookup is best-effort */
+      } catch (err) {
+        console.warn("Customer lookup failed", err);
+        /* lookup is best-effort — surface in dev tools but do not block the form */
       }
     }, 300);
     return () => clearTimeout(t);

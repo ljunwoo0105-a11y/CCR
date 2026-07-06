@@ -473,7 +473,7 @@ export default function QuoteBuilder() {
                 const dLabel = discountLabel(it.discountType, it.discountValue);
                 const discounted = net < it.sellPrice;
                 return (
-                  <li key={idx} className="px-4 py-3">
+                  <li key={it.repairType} className="px-4 py-3">
                     <div className="flex items-start justify-between gap-3">
                       <div>
                         <span className="font-medium text-slate-900">

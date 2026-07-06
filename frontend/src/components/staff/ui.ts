@@ -6,46 +6,61 @@
 const BADGE_BASE =
   "inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold";
 
+function intakeStatusTone(status: string): string {
+  switch (status) {
+    case "CHECKED_IN":
+      return "bg-sky-100 text-sky-800";
+    case "IN_REPAIR":
+      return "bg-amber-100 text-amber-800";
+    case "READY":
+      return "bg-emerald-100 text-emerald-800";
+    case "COLLECTED":
+      return "bg-slate-200 text-slate-700";
+    case "CANCELLED":
+      return "bg-rose-100 text-rose-800";
+    default:
+      return "bg-slate-100 text-slate-700";
+  }
+}
+
 export function intakeStatusBadge(status: string): string {
-  const tone =
-    status === "CHECKED_IN"
-      ? "bg-sky-100 text-sky-800"
-      : status === "IN_REPAIR"
-        ? "bg-amber-100 text-amber-800"
-        : status === "READY"
-          ? "bg-emerald-100 text-emerald-800"
-          : status === "COLLECTED"
-            ? "bg-slate-200 text-slate-700"
-            : status === "CANCELLED"
-              ? "bg-rose-100 text-rose-800"
-              : "bg-slate-100 text-slate-700";
-  return `${BADGE_BASE} ${tone}`;
+  return `${BADGE_BASE} ${intakeStatusTone(status)}`;
+}
+
+function leadStatusTone(status: string): string {
+  switch (status) {
+    case "NEW":
+      return "bg-orange-100 text-orange-800";
+    case "EMAILED":
+      return "bg-sky-100 text-sky-800";
+    case "CONTACTED":
+      return "bg-violet-100 text-violet-800";
+    case "BOOKED":
+      return "bg-emerald-100 text-emerald-800";
+    default:
+      return "bg-slate-200 text-slate-700";
+  }
 }
 
 export function leadStatusBadge(status: string): string {
-  const tone =
-    status === "NEW"
-      ? "bg-orange-100 text-orange-800"
-      : status === "EMAILED"
-        ? "bg-sky-100 text-sky-800"
-        : status === "CONTACTED"
-          ? "bg-violet-100 text-violet-800"
-          : status === "BOOKED"
-            ? "bg-emerald-100 text-emerald-800"
-            : "bg-slate-200 text-slate-700";
-  return `${BADGE_BASE} ${tone}`;
+  return `${BADGE_BASE} ${leadStatusTone(status)}`;
+}
+
+function qualityTone(quality: string): string {
+  switch (quality) {
+    case "GENUINE":
+      return "bg-emerald-100 text-emerald-800";
+    case "OEM":
+      return "bg-sky-100 text-sky-800";
+    case "PREMIUM":
+      return "bg-violet-100 text-violet-800";
+    default:
+      return "bg-slate-200 text-slate-700";
+  }
 }
 
 export function qualityBadge(quality: string): string {
-  const tone =
-    quality === "GENUINE"
-      ? "bg-emerald-100 text-emerald-800"
-      : quality === "OEM"
-        ? "bg-sky-100 text-sky-800"
-        : quality === "PREMIUM"
-          ? "bg-violet-100 text-violet-800"
-          : "bg-slate-200 text-slate-700";
-  return `${BADGE_BASE} ${tone}`;
+  return `${BADGE_BASE} ${qualityTone(quality)}`;
 }
 
 /** "CHECKED_IN" → "Checked in" */
