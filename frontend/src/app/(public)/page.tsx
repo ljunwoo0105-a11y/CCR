@@ -13,7 +13,7 @@ import JsonLd from "@/components/public/JsonLd";
 import { localBusinessSchema, faqPageSchema } from "@/components/public/schema";
 import { HOME_FAQS } from "@/components/public/faq-data";
 
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Phone, Tablet & Computer Repairs Springfield Central",

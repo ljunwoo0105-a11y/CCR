@@ -10,7 +10,7 @@ import { RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import StarRow from "@/components/motion/StarRow";
 import PageMasthead from "@/components/public/pages/PageMasthead";
 
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Customer Reviews — Rated on Google",
