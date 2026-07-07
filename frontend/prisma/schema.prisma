@@ -3,9 +3,12 @@
 
 generator client {
   provider      = "prisma-client-js"
-  // Vercel's serverless runtime needs the RHEL/OpenSSL binary in addition
-  // to the native one used for local dev.
-  binaryTargets = ["native", "rhel-openssl-3.0.x"]
+  // Cover every runtime we deploy to:
+  //   native                     -> local dev
+  //   rhel-openssl-3.0.x         -> Vercel serverless
+  //   debian-openssl-3.0.x       -> Emergent Kubernetes runtime
+  //   linux-musl-openssl-3.0.x   -> Alpine build stage
+  binaryTargets = ["native", "rhel-openssl-3.0.x", "debian-openssl-3.0.x", "linux-musl-openssl-3.0.x"]
 }
 
 datasource db {
