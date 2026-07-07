@@ -2,7 +2,10 @@
 // SQLite locally; switch the datasource provider to "postgresql" in production.
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  // Vercel's serverless runtime needs the RHEL/OpenSSL binary in addition
+  // to the native one used for local dev.
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
 }
 
 datasource db {
